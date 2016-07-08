@@ -12,24 +12,27 @@
   <script src="bower_components/angular-resource/angular-resource.js"></script>
   <script src="js/app.js"></script>
 </head>
-<body>
+
+<body data-ng-app="superhero">
+
   <h1>Superheroes</h1>
-  <div class="picture">
-    Picture:
+  <div data-ng-controller="SuperheroController as hero" class="picture">
+    <img data-ng-src="{{hero.heroImage}}">
+
+    <div class="search">
+      Search: <input data-ng-model ="hero.filter_on"> </input>
+    </div>
+    <table class="table">
+      <thead>
+        <tr data-ng-repeat="superhero in hero.data | filter: hero.filter_on" ng-class="{dc: (superhero.group == 'DC'), marvel: (superhero.group == 'Marvel')}">
+          <th>{{superhero.name}}</th>
+          <th>{{superhero.number}}</th>
+          <th><button ng-click="hero.heroImage = superhero.img"> picture </button></th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
   </div>
-  <div class="search">
-    Search:
-  </div>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Name:</th>
-        <th>Number:</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-    </tbody>
-  </table>
 </body>
 </html>

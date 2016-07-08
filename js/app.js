@@ -1,3 +1,4 @@
+
 var superheroList = [
   {
     name: "Spiderman",
@@ -54,3 +55,22 @@ var superheroList = [
     img: "img/supergirl.jpg"
   }
 ]
+
+
+"use strict";
+
+(function(){
+  angular
+  .module("superhero", [])
+  .controller("SuperheroController", SuperheroController)
+
+  function SuperheroController () {
+    var hero = this;
+    hero.hello = "hello world"
+    hero.data = superheroList;
+  }
+
+
+
+
+})();
